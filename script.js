@@ -6,6 +6,9 @@ document.addEventListener("click", (e) => {
     case "size-selector":
       selectSize();
       break;
+    case "randomize":
+      randomize();
+      break;
   }
 });
 
@@ -32,7 +35,15 @@ document.addEventListener("mouseover", (e) => {
 });
 
 function paintPixel(pixel, color) {
-  pixel.style.backgroundColor = color;
+  if (randomColors) {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    pixel.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+  } else {
+    pixel.style.backgroundColor = color;
+  }
 }
 
 const colorPicker = document.querySelector("#color-picker");
@@ -51,4 +62,17 @@ function selectSize() {
   }
   canvasSize = newSize;
   generatePixels();
+}
+
+let randomColors = false;
+function randomize() {
+  const randomizeButton = document.querySelector("#randomize");
+
+  if (randomColors) {
+    randomizeButton.textContent = "Randomize colors: ❌";
+    randomColors = false;
+  } else {
+    randomizeButton.textContent = "Randomize colors: ☑️";
+    randomColors = true;
+  }
 }
