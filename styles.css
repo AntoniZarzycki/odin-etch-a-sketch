@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Roboto, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #canvas {
   width: 640px;
   height: 640px;
@@ -12,4 +22,9 @@
 
 .pixel {
   border: 1px solid black;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 700;
 }
