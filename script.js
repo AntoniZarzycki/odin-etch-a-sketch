@@ -11,3 +11,7 @@ function generatePixels(count) {
 }
 
 generatePixels(16);
+
+document.addEventListener("mouseover", (e) => {
+  if (e.target.classList.contains("pixel")) console.log(e);
+});
