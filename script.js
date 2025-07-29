@@ -1,19 +1,20 @@
-function generatePixels(count) {
+function generatePixels() {
   const canvas = document.querySelector("#canvas");
   canvas.textContent = "";
 
-  const size = canvas.offsetWidth / count;
+  const pixelSize = canvas.offsetWidth / canvasSize;
 
-  for (let i = 1; i <= count * count; i++) {
+  for (let i = 1; i <= canvasSize * canvasSize; i++) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.style.width = `${size}px`;
-    pixel.style.height = `${size}px`;
+    pixel.style.width = `${pixelSize}px`;
+    pixel.style.height = `${pixelSize}px`;
     canvas.appendChild(pixel);
   }
 }
 
-generatePixels(16);
+let canvasSize = 16;
+generatePixels(canvasSize);
 
 document.addEventListener("mouseover", (e) => {
   if (e.target.classList.contains("pixel")) paintPixel(e.target, color);
@@ -40,5 +41,9 @@ function selectSize() {
     alert("Wrong number! Please type a number between 1 and 50");
     return;
   }
-  generatePixels(newSize);
+  canvasSize = newSize;
+  generatePixels();
 }
+
+const clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", generatePixels);
