@@ -1,3 +1,14 @@
+document.addEventListener("click", (e) => {
+  switch (e.target.id) {
+    case "clear":
+      generatePixels();
+      break;
+    case "size-selector":
+      selectSize();
+      break;
+  }
+});
+
 function generatePixels() {
   const canvas = document.querySelector("#canvas");
   canvas.textContent = "";
@@ -29,9 +40,6 @@ let color = colorPicker.value;
 
 colorPicker.addEventListener("input", (e) => (color = e.target.value));
 
-const sizeSelector = document.querySelector("#size-selector");
-sizeSelector.addEventListener("click", selectSize);
-
 function selectSize() {
   let newSize = Math.floor(
     Number(prompt("Type a number between 1 and 50", "16"))
@@ -44,6 +52,3 @@ function selectSize() {
   canvasSize = newSize;
   generatePixels();
 }
-
-const clearButton = document.querySelector("#clear");
-clearButton.addEventListener("click", generatePixels);
