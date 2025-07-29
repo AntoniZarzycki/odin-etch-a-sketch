@@ -51,16 +51,14 @@ let color = colorPicker.value;
 
 colorPicker.addEventListener("input", (e) => (color = e.target.value));
 
-function selectSize() {
-  let newSize = Math.floor(
-    Number(prompt("Type a number between 1 and 50", "16"))
-  );
+const sizeSlider = document.querySelector("#size-slider");
+sizeSlider.addEventListener("input", selectSize);
+sizeSlider.value = canvasSize;
 
-  if (!newSize || newSize > 50 || newSize < 1) {
-    alert("Wrong number! Please type a number between 1 and 50");
-    return;
-  }
-  canvasSize = newSize;
+function selectSize(e) {
+  canvasSize = e.target.value;
+  const sizeLabel = document.querySelector("#size-label");
+  sizeLabel.textContent = `Canvas size: ${canvasSize}x${canvasSize}`;
   generatePixels();
 }
 
