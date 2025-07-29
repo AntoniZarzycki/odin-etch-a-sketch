@@ -9,9 +9,14 @@
   <body>
     <h1>Etch-a-Sketch</h1>
     <div class="container">
+      <div class="buttons">
+        <div class="input-container">
+          <input id="color-picker" type="color" value="#ff0000" />
+          <label for="color-picker">Select color</label>
+        </div>
+        <button id="size-selector">Select canvas size</button>
+      </div>
       <div id="canvas"></div>
-      <input id="color-picker" type="color" value="#ff0000" />
-      <button id="size-selector">Select canvas size</button>
     </div>
     <script src="script.js"></script>
   </body>
