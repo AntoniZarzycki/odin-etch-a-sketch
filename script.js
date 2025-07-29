@@ -19,13 +19,11 @@ function generatePixels() {
   const canvas = document.querySelector("#canvas");
   canvas.textContent = "";
 
-  const pixelSize = canvas.offsetWidth / canvasSize;
+  canvas.style.gridTemplate = `repeat(${canvasSize}, 1fr) / repeat(${canvasSize}, 1fr)`;
 
   for (let i = 1; i <= canvasSize * canvasSize; i++) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.style.width = `${pixelSize}px`;
-    pixel.style.height = `${pixelSize}px`;
     canvas.appendChild(pixel);
   }
 }
