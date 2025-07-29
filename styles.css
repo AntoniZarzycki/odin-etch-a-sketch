@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+#canvas {
+  width: 640px;
+  height: 640px;
+  outline: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pixel {
+  border: 1px solid black;
+}
