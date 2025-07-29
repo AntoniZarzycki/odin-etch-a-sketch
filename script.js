@@ -14,9 +14,14 @@ function generatePixels(count) {
 generatePixels(16);
 
 document.addEventListener("mouseover", (e) => {
-  if (e.target.classList.contains("pixel")) paintPixel(e.target, "#000000");
+  if (e.target.classList.contains("pixel")) paintPixel(e.target, color);
 });
 
 function paintPixel(pixel, color) {
   pixel.style.backgroundColor = color;
 }
+
+const colorPicker = document.querySelector("#color-picker");
+let color = colorPicker.value;
+
+colorPicker.addEventListener("input", (e) => (color = e.target.value));
