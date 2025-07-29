@@ -9,6 +9,9 @@ document.addEventListener("click", (e) => {
     case "randomize":
       randomize();
       break;
+    case "mode":
+      changeMode();
+      break;
   }
 });
 
@@ -35,6 +38,8 @@ document.addEventListener("mouseover", (e) => {
 });
 
 function paintPixel(pixel, color) {
+  if (mode === "click" && !mouseDown) return;
+
   if (randomColors) {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
@@ -74,3 +79,19 @@ function randomize() {
     randomColors = true;
   }
 }
+
+let mode = "hover";
+function changeMode() {
+  const modeSelector = document.querySelector("#mode");
+  if (mode === "hover") {
+    mode = "click";
+    modeSelector.textContent = "Mode: Click";
+  } else {
+    mode = "hover";
+    modeSelector.textContent = "Mode: Hover";
+  }
+}
+
+let mouseDown = false;
+document.addEventListener("mousedown", () => (mouseDown = true));
+document.addEventListener("mouseup", () => (mouseDown = false));
