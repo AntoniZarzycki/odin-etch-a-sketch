@@ -5,7 +5,8 @@ function generatePixels(count) {
   for (let i = 1; i <= count * count; i++) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.setAttribute("style", `width: ${size}px; height: ${size}px;`);
+    pixel.style.width = `${size}px`;
+    pixel.style.height = `${size}px`;
     canvas.appendChild(pixel);
   }
 }
